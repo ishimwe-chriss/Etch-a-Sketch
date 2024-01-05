@@ -1,4 +1,17 @@
 let color = "black";
+let click = false;
+
+document.querySelector("body").addEventListener("click", function(e){
+    if(e.target.tagName != "BUTTON"){
+        click = !click;
+        let draw =document.querySelector("#draw");
+        if(click){
+            draw.innerHTML = "Now You can Draw";
+        }else{
+            draw.innerHTML ="Not allowed to draw";
+        }
+    }
+})
 
 let popup = document.querySelector("#popup");
 popup.addEventListener("click", function (){
@@ -37,6 +50,7 @@ function getInput(){
 }
 
 function changeColor(){
+    if(click){
     if(color == "random"){
         this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
     }
@@ -44,6 +58,7 @@ function changeColor(){
         this.style.backgroundColor = "black";
     }
 
+}
 }
 
 function setColor(choice){
